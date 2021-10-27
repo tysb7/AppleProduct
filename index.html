@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>APPLE产品</title>
+    <!-- 引入刚刚下载的 ECharts 文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.2.1/dist/echarts.min.js"></script>
+</head>
+
+<body>
+    <!-- 为 ECharts 准备一个定义了宽高的 DOM -->
+    <style>
+        #main {
+            height: 800px;
+            width: 90%;
+        }
+    </style>
+    <div id="main"></div>
+    <script type="text/javascript">
+        console.log(document.documentElement.clientHeight)
+        document.getElementById("main").style.height = document.documentElement.clientHeight - 100 + 'px';
+        var myChart = echarts.init(document.getElementById('main'));
+        window.onresize = function() {
+            myChart.resize();
+        };
+    </script>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        const dataiPhone = [
+            ['128G', 5199, 4, 'iPhone 13 mini', '5.4英寸 超视网膜 XDR 显示屏', 'A15 Bionic'],
+            ['256G', 5999, 4, 'iPhone 13 mini', '5.4英寸 超视网膜 XDR 显示屏', 'A15 Bionic'],
+            ['512G', 7599, 4, 'iPhone 13 mini', '5.4英寸 超视网膜 XDR 显示屏', 'A15 Bionic'],
+            ['128G', 5999, 4, 'iPhone 13', '6.1英寸 超视网膜 XDR 显示屏', 'A15 Bionic'],
+            ['256G', 6799, 4, 'iPhone 13', '6.1英寸 超视网膜 XDR 显示屏', 'A15 Bionic'],
+            ['512G', 8399, 4, 'iPhone 13', '6.1英寸 超视网膜 XDR 显示屏', 'A15 Bionic'],
+            ['128G', 7999, 6, 'iPhone 13 Pro', '6.1英寸 超视网膜 XDR 显示屏 ProMotion 自适应刷新率', 'A15 Bionic'],
+            ['256G', 8799, 6, 'iPhone 13 Pro', '6.1英寸 超视网膜 XDR 显示屏 ProMotion 自适应刷新率', 'A15 Bionic'],
+            ['512G', 10399, 6, 'iPhone 13 Pro', '6.1英寸 超视网膜 XDR 显示屏 ProMotion 自适应刷新率', 'A15 Bionic'],
+            ['1T', 11999, 6, 'iPhone 13 Pro', '6.1英寸 超视网膜 XDR 显示屏 ProMotion 自适应刷新率', 'A15 Bionic'],
+            ['128G', 8999, 6, 'iPhone 13 Pro Max', '6.7英寸 超视网膜 XDR 显示屏 ProMotion 自适应刷新率', 'A15 Bionic'],
+            ['256G', 9799, 6, 'iPhone 13 Pro Max', '6.7英寸 超视网膜 XDR 显示屏 ProMotion 自适应刷新率', 'A15 Bionic'],
+            ['512G', 11399, 6, 'iPhone 13 Pro Max', '6.7英寸 超视网膜 XDR 显示屏 ProMotion 自适应刷新率', 'A15 Bionic'],
+            ['1T', 12999, 6, 'iPhone 13 Pro Max', '6.7英寸 超视网膜 XDR 显示屏 ProMotion 自适应刷新率', 'A15 Bionic'],
+        ];
+        const dataiPad = [
+            ['64G', 3799, 4, 'iPad mini (第六代) WALN', '8.3英寸 Liquid 视网膜显示屏', 'A15 Bionic chip'],
+            ['256G', 4999, 4, 'iPad mini (第六代) WALN', '8.3英寸 Liquid 视网膜显示屏', 'A15 Bionic chip'],
+            ['64G', 4999, 4, 'iPad mini (第六代) 5G', '8.3英寸 Liquid 视网膜显示屏', 'A15 Bionic chip'],
+            ['256G', 6199, 4, 'iPad mini (第六代) 5G', '8.3英寸 Liquid 视网膜显示屏', 'A15 Bionic chip'],
+            ['64G', 4799, 4, 'iPad Air (第四代) WALN', '10.9英寸 Liquid 视网膜显示屏', 'A14 Bionic chip'],
+            ['256G', 5999, 4, 'iPad Air (第四代) WALN', '10.9英寸 Liquid 视网膜显示屏', 'A14 Bionic chip'],
+            ['64G', 5799, 4, 'iPad Air (第四代) 5G', '10.9英寸 Liquid 视网膜显示屏', 'A14 Bionic chip'],
+            ['256G', 6999, 4, 'iPad Air (第四代) 5G', '10.9英寸 Liquid 视网膜显示屏', 'A14 Bionic chip'],
+            ['64G', 2499, 3, 'iPad (第九代) WALN', '10.2英寸 视网膜显示屏', 'A13 Bionic chip'],
+            ['256G', 3699, 3, 'iPad (第九代) WALN', '10.2英寸 视网膜显示屏', 'A13 Bionic chip'],
+            ['64G', 3499, 3, 'iPad (第九代) 5G', '10.2英寸 视网膜显示屏', 'A13 Bionic chip'],
+            ['256G', 4699, 3, 'iPad (第九代) 5G', '10.2英寸 视网膜显示屏', 'A13 Bionic chip'],
+        ];
+        const dataiPadPro = [
+            ['128G', 6199, 8, 'iPadPro (第三代) 11英寸 WALN', 'Liquid视网膜显示屏', 'M1'],
+            ['256G', 6999, 8, 'iPadPro (第三代) 11英寸 WALN', 'Liquid视网膜显示屏', 'M1'],
+            ['512G', 8599, 8, 'iPadPro (第三代) 11英寸 WALN', 'Liquid视网膜显示屏', 'M1'],
+            ['1T', 11799, 16, 'iPadPro (第三代) 11英寸 WALN', 'Liquid视网膜显示屏', 'M1'],
+            ['2T', 14999, 16, 'iPadPro (第三代) 11英寸 WALN', 'Liquid视网膜显示屏', 'M1'],
+            ['128G', 7399, 8, 'iPadPro (第三代) 11英寸 5G', 'Liquid视网膜显示屏', 'M1'],
+            ['256G', 8199, 8, 'iPadPro (第三代) 11英寸 5G', 'Liquid视网膜显示屏', 'M1'],
+            ['512G', 9799, 8, 'iPadPro (第三代) 11英寸 5G', 'Liquid视网膜显示屏', 'M1'],
+            ['1T', 12999, 16, 'iPadPro (第三代) 11英寸 5G', 'Liquid视网膜显示屏', 'M1'],
+            ['2T', 16199, 16, 'iPadPro (第三代) 11英寸 5G', 'Liquid视网膜显示屏', 'M1'],
+            ['128G', 8499, 8, 'iPadPro (第五代) 12.9英寸 WALN', 'Liquid视网膜 XDR 显示屏', 'M1'],
+            ['256G', 9299, 8, 'iPadPro (第五代) 12.9英寸 WALN', 'Liquid视网膜 XDR 显示屏', 'M1'],
+            ['512G', 10899, 8, 'iPadPro (第五代) 12.9英寸 WALN', 'Liquid视网膜 XDR 显示屏', 'M1'],
+            ['1T', 14099, 16, 'iPadPro (第五代) 12.9英寸 WALN', 'Liquid视网膜 XDR 显示屏', 'M1'],
+            ['2T', 17299, 16, 'iPadPro (第五代) 12.9英寸 WALN', 'Liquid视网膜 XDR 显示屏', 'M1'],
+            ['128G', 9699, 8, 'iPadPro (第五代) 12.9英寸 5G', 'Liquid视网膜 XDR 显示屏', 'M1'],
+            ['256G', 10499, 8, 'iPadPro (第五代) 12.9英寸 5G', 'Liquid视网膜 XDR 显示屏', 'M1'],
+            ['512G', 12099, 8, 'iPadPro (第五代) 12.9英寸 5G', 'Liquid视网膜 XDR 显示屏', 'M1'],
+            ['1T', 15299, 16, 'iPadPro (第五代) 12.9英寸 5G', 'Liquid视网膜 XDR 显示屏', 'M1'],
+            ['2T', 18499, 16, 'iPadPro (第五代) 12.9英寸 5G', 'Liquid视网膜 XDR 显示屏', 'M1'],
+        ];
+        const dataMacMini = [
+            ['256G', 5299, 8, 'Mac mini (M1,2020)', '千兆以太网', 'M1'],
+            ['512G', 6799, 8, 'Mac mini (M1,2020)', '千兆以太网', 'M1'],
+            ['1T', 8299, 8, 'Mac mini (M1,2020)', '千兆以太网', 'M1'],
+            ['2T', 11299, 8, 'Mac mini (M1,2020)', '千兆以太网', 'M1'],
+            ['256G', 6799, 16, 'Mac mini (M1,2020)', '千兆以太网', 'M1'],
+            ['512G', 8299, 16, 'Mac mini (M1,2020)', '千兆以太网', 'M1'],
+            ['1T', 9799, 16, 'Mac mini (M1,2020)', '千兆以太网', 'M1'],
+            ['2T', 12799, 16, 'Mac mini (M1,2020)', '千兆以太网', 'M1'],
+            ['256G', 6049, 8, 'Mac mini (M1,2020)', '10Gb 以太网', 'M1'],
+            ['512G', 7549, 8, 'Mac mini (M1,2020)', '10Gb 以太网', 'M1'],
+            ['1T', 9049, 8, 'Mac mini (M1,2020)', '10Gb 以太网', 'M1'],
+            ['2T', 12049, 8, 'Mac mini (M1,2020)', '10Gb 以太网', 'M1'],
+            ['256G', 7549, 16, 'Mac mini (M1,2020)', '10Gb 以太网', 'M1'],
+            ['512G', 9049, 16, 'Mac mini (M1,2020)', '10Gb 以太网', 'M1'],
+            ['1T', 10549, 16, 'Mac mini (M1,2020)', '10Gb 以太网', 'M1'],
+            ['2T', 13549, 16, 'Mac mini (M1,2020)', '10Gb 以太网', 'M1'],
+
+        ];
+        const dataiMac = [
+            ['256G', 9999, 8, 'iMac 24英寸 (M1,2021)', '8 核中央处理器、7 核图形处理器和 16 核神经网络引擎', 'M1'],
+            ['512G', 11499, 8, 'iMac 24英寸 (M1,2021)', '8 核中央处理器、7 核图形处理器和 16 核神经网络引擎', 'M1'],
+            ['1T', 12999, 8, 'iMac 24英寸 (M1,2021)', '8 核中央处理器、7 核图形处理器和 16 核神经网络引擎', 'M1'],
+            ['256G', 11499, 16, 'iMac 24英寸 (M1,2021)', '8 核中央处理器、7 核图形处理器和 16 核神经网络引擎', 'M1'],
+            ['512G', 12999, 16, 'iMac 24英寸 (M1,2021)', '8 核中央处理器、7 核图形处理器和 16 核神经网络引擎', 'M1'],
+            ['1T', 14499, 16, 'iMac 24英寸 (M1,2021)', '8 核中央处理器、7 核图形处理器和 16 核神经网络引擎', 'M1'],
+            ['256G', 11499, 8, 'iMac 24英寸 (M1,2021)', '8 核中央处理器、8 核图形处理器和 16 核神经网络引擎', 'M1'],
+            ['512G', 12999, 8, 'iMac 24英寸 (M1,2021)', '8 核中央处理器、8 核图形处理器和 16 核神经网络引擎', 'M1'],
+            ['1T', 14499, 8, 'iMac 24英寸 (M1,2021)', '8 核中央处理器、8 核图形处理器和 16 核神经网络引擎', 'M1'],
+            ['2T', 17499, 8, 'iMac 24英寸 (M1,2021)', '8 核中央处理器、8 核图形处理器和 16 核神经网络引擎', 'M1'],
+            ['256G', 12999, 16, 'iMac 24英寸 (M1,2021)', '8 核中央处理器、8 核图形处理器和 16 核神经网络引擎', 'M1'],
+            ['512G', 14499, 16, 'iMac 24英寸 (M1,2021)', '8 核中央处理器、8 核图形处理器和 16 核神经网络引擎', 'M1'],
+            ['1T', 15999, 16, 'iMac 24英寸 (M1,2021)', '8 核中央处理器、8 核图形处理器和 16 核神经网络引擎', 'M1'],
+            ['2T', 18999, 16, 'iMac 24英寸 (M1,2021)', '8 核中央处理器、8 核图形处理器和 16 核神经网络引擎', 'M1'],
+        ];
+        const dataMacBookAir = [
+            ['256G', 7999, 8, 'MacBook Air (M1,2020)', '8 核中央处理器、7 核图形处理器和 16 核神经网络引擎', 'M1'],
+            ['512G', 9499, 8, 'MacBook Air (M1,2020)', '8 核中央处理器、7 核图形处理器和 16 核神经网络引擎', 'M1'],
+            ['1T', 10999, 8, 'MacBook Air (M1,2020)', '8 核中央处理器、7 核图形处理器和 16 核神经网络引擎', 'M1'],
+            ['2T', 13999, 8, 'MacBook Air (M1,2020)', '8 核中央处理器、7 核图形处理器和 16 核神经网络引擎', 'M1'],
+            ['256G', 9499, 16, 'MacBook Air (M1,2020)', '8 核中央处理器、7 核图形处理器和 16 核神经网络引擎', 'M1'],
+            ['512G', 10999, 16, 'MacBook Air (M1,2020)', '8 核中央处理器、7 核图形处理器和 16 核神经网络引擎', 'M1'],
+            ['1T', 12499, 16, 'MacBook Air (M1,2020)', '8 核中央处理器、7 核图形处理器和 16 核神经网络引擎', 'M1'],
+            ['2T', 15499, 16, 'MacBook Air (M1,2020)', '8 核中央处理器、7 核图形处理器和 16 核神经网络引擎', 'M1'],
+            ['512G', 9799, 8, 'MacBook Air (M1,2020)', '8 核中央处理器、8 核图形处理器和 16 核神经网络引擎', 'M1'],
+            ['1T', 11299, 8, 'MacBook Air (M1,2020)', '8 核中央处理器、8 核图形处理器和 16 核神经网络引擎', 'M1'],
+            ['2T', 14299, 8, 'MacBook Air (M1,2020)', '8 核中央处理器、8 核图形处理器和 16 核神经网络引擎', 'M1'],
+            ['512G', 11299, 16, 'MacBook Air (M1,2020)', '8 核中央处理器、8 核图形处理器和 16 核神经网络引擎', 'M1'],
+            ['1T', 12799, 16, 'MacBook Air (M1,2020)', '8 核中央处理器、8 核图形处理器和 16 核神经网络引擎', 'M1'],
+            ['2T', 15799, 16, 'MacBook Air (M1,2020)', '8 核中央处理器、8 核图形处理器和 16 核神经网络引擎', 'M1'],
+        ];
+        const dataMacBookPro13 = [
+            ['256G', 9999, 8, 'MacBook Pro 13英寸 (M1,2020)', '8 核中央处理器、8 核图形处理器和 16 核神经网络引擎', 'M1'],
+            ['512G', 11499, 8, 'MacBook Pro 13英寸 (M1,2020)', '8 核中央处理器、8 核图形处理器和 16 核神经网络引擎', 'M1'],
+            ['1T', 12999, 8, 'MacBook Pro 13英寸 (M1,2020)', '8 核中央处理器、8 核图形处理器和 16 核神经网络引擎', 'M1'],
+            ['2T', 15999, 8, 'MacBook Pro 13英寸 (M1,2020)', '8 核中央处理器、8 核图形处理器和 16 核神经网络引擎', 'M1'],
+            ['256G', 11499, 16, 'MacBook Pro 13英寸 (M1,2020)', '8 核中央处理器、8 核图形处理器和 16 核神经网络引擎', 'M1'],
+            ['512G', 12999, 16, 'MacBook Pro 13英寸 (M1,2020)', '8 核中央处理器、8 核图形处理器和 16 核神经网络引擎', 'M1'],
+            ['1T', 14499, 16, 'MacBook Pro 13英寸 (M1,2020)', '8 核中央处理器、8 核图形处理器和 16 核神经网络引擎', 'M1'],
+            ['2T', 17499, 16, 'MacBook Pro 13英寸 (M1,2020)', '8 核中央处理器、8 核图形处理器和 16 核神经网络引擎', 'M1'],
+
+        ];
+        const dataMacBookPro14 = [
+            ['512G', 14999, 16, 'MacBook Pro 14英寸 (M1 Pro,2021)', '8 核中央处理器、14 核图形处理器和 16 核神经网络引擎</br>67W USB-C 电源适配器', 'M1 Pro'],
+            ['1T', 16499, 16, 'MacBook Pro 14英寸 (M1 Pro,2021)', '8 核中央处理器、14 核图形处理器和 16 核神经网络引擎</br>67W USB-C 电源适配器', 'M1 Pro'],
+            ['2T', 19499, 16, 'MacBook Pro 14英寸 (M1 Pro,2021)', '8 核中央处理器、14 核图形处理器和 16 核神经网络引擎</br>67W USB-C 电源适配器', 'M1 Pro'],
+            ['4T', 23999, 16, 'MacBook Pro 14英寸 (M1 Pro,2021)', '8 核中央处理器、14 核图形处理器和 16 核神经网络引擎</br>67W USB-C 电源适配器', 'M1 Pro'],
+            ['8T', 32999, 16, 'MacBook Pro 14英寸 (M1 Pro,2021)', '8 核中央处理器、14 核图形处理器和 16 核神经网络引擎</br>67W USB-C 电源适配器', 'M1 Pro'],
+            ['512G', 17999, 32, 'MacBook Pro 14英寸 (M1 Pro,2021)', '8 核中央处理器、14 核图形处理器和 16 核神经网络引擎</br>67W USB-C 电源适配器', 'M1 Pro'],
+            ['1T', 19499, 32, 'MacBook Pro 14英寸 (M1 Pro,2021)', '8 核中央处理器、14 核图形处理器和 16 核神经网络引擎</br>67W USB-C 电源适配器', 'M1 Pro'],
+            ['2T', 22499, 32, 'MacBook Pro 14英寸 (M1 Pro,2021)', '8 核中央处理器、14 核图形处理器和 16 核神经网络引擎</br>67W USB-C 电源适配器', 'M1 Pro'],
+            ['4T', 26999, 32, 'MacBook Pro 14英寸 (M1 Pro,2021)', '8 核中央处理器、14 核图形处理器和 16 核神经网络引擎</br>67W USB-C 电源适配器', 'M1 Pro'],
+            ['8T', 35999, 32, 'MacBook Pro 14英寸 (M1 Pro,2021)', '8 核中央处理器、14 核图形处理器和 16 核神经网络引擎</br>67W USB-C 电源适配器', 'M1 Pro'],
+            ['512G', 16499, 16, 'MacBook Pro 14英寸 (M1 Pro,2021)', '10 核中央处理器、14 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Pro'],
+            ['1T', 17999, 16, 'MacBook Pro 14英寸 (M1 Pro,2021)', '10 核中央处理器、14 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Pro'],
+            ['2T', 20499, 16, 'MacBook Pro 14英寸 (M1 Pro,2021)', '10 核中央处理器、14 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Pro'],
+            ['4T', 25499, 16, 'MacBook Pro 14英寸 (M1 Pro,2021)', '10 核中央处理器、14 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Pro'],
+            ['8T', 34499, 16, 'MacBook Pro 14英寸 (M1 Pro,2021)', '10 核中央处理器、14 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Pro'],
+            ['512G', 19499, 32, 'MacBook Pro 14英寸 (M1 Pro,2021)', '10 核中央处理器、14 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Pro'],
+            ['1T', 20999, 32, 'MacBook Pro 14英寸 (M1 Pro,2021)', '10 核中央处理器、14 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Pro'],
+            ['2T', 23999, 32, 'MacBook Pro 14英寸 (M1 Pro,2021)', '10 核中央处理器、14 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Pro'],
+            ['4T', 28499, 32, 'MacBook Pro 14英寸 (M1 Pro,2021)', '10 核中央处理器、14 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Pro'],
+            ['8T', 37499, 32, 'MacBook Pro 14英寸 (M1 Pro,2021)', '10 核中央处理器、14 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Pro'],
+            ['512G', 17499, 16, 'MacBook Pro 14英寸 (M1 Pro,2021)', '10 核中央处理器、16 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Pro'],
+            ['1T', 18999, 16, 'MacBook Pro 14英寸 (M1 Pro,2021)', '10 核中央处理器、16 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Pro'],
+            ['2T', 21499, 16, 'MacBook Pro 14英寸 (M1 Pro,2021)', '10 核中央处理器、16 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Pro'],
+            ['4T', 26499, 16, 'MacBook Pro 14英寸 (M1 Pro,2021)', '10 核中央处理器、16 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Pro'],
+            ['8T', 35499, 16, 'MacBook Pro 14英寸 (M1 Pro,2021)', '10 核中央处理器、16 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Pro'],
+            ['512G', 20499, 32, 'MacBook Pro 14英寸 (M1 Pro,2021)', '10 核中央处理器、16 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Pro'],
+            ['1T', 21999, 32, 'MacBook Pro 14英寸 (M1 Pro,2021)', '10 核中央处理器、16 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Pro'],
+            ['2T', 24999, 32, 'MacBook Pro 14英寸 (M1 Pro,2021)', '10 核中央处理器、16 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Pro'],
+            ['4T', 29499, 32, 'MacBook Pro 14英寸 (M1 Pro,2021)', '10 核中央处理器、16 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Pro'],
+            ['8T', 38499, 32, 'MacBook Pro 14英寸 (M1 Pro,2021)', '10 核中央处理器、16 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Pro'],
+            ['512G', 21999, 32, 'MacBook Pro 14英寸 (M1 Max,2021)', '10 核中央处理器、24 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Max'],
+            ['1T', 23499, 32, 'MacBook Pro 14英寸 (M1 Max,2021)', '10 核中央处理器、24 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Max'],
+            ['2T', 26499, 32, 'MacBook Pro 14英寸 (M1 Max,2021)', '10 核中央处理器、24 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Max'],
+            ['4T', 20999, 32, 'MacBook Pro 14英寸 (M1 Max,2021)', '10 核中央处理器、24 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Max'],
+            ['8T', 39999, 32, 'MacBook Pro 14英寸 (M1 Max,2021)', '10 核中央处理器、24 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Max'],
+            ['512G', 24999, 64, 'MacBook Pro 14英寸 (M1 Max,2021)', '10 核中央处理器、24 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Max'],
+            ['1T', 26499, 64, 'MacBook Pro 14英寸 (M1 Max,2021)', '10 核中央处理器、24 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Max'],
+            ['2T', 29499, 64, 'MacBook Pro 14英寸 (M1 Max,2021)', '10 核中央处理器、24 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Max'],
+            ['4T', 33999, 64, 'MacBook Pro 14英寸 (M1 Max,2021)', '10 核中央处理器、24 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Max'],
+            ['8T', 42999, 64, 'MacBook Pro 14英寸 (M1 Max,2021)', '10 核中央处理器、24 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Max'],
+            ['512G', 23499, 32, 'MacBook Pro 14英寸 (M1 Max,2021)', '10 核中央处理器、32 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Max'],
+            ['1T', 24999, 32, 'MacBook Pro 14英寸 (M1 Max,2021)', '10 核中央处理器、32 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Max'],
+            ['2T', 27999, 32, 'MacBook Pro 14英寸 (M1 Max,2021)', '10 核中央处理器、32 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Max'],
+            ['4T', 32499, 32, 'MacBook Pro 14英寸 (M1 Max,2021)', '10 核中央处理器、32 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Max'],
+            ['8T', 41499, 32, 'MacBook Pro 14英寸 (M1 Max,2021)', '10 核中央处理器、32 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Max'],
+            ['512G', 26499, 64, 'MacBook Pro 14英寸 (M1 Max,2021)', '10 核中央处理器、32 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Max'],
+            ['1T', 27999, 64, 'MacBook Pro 14英寸 (M1 Max,2021)', '10 核中央处理器、32 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Max'],
+            ['2T', 30999, 64, 'MacBook Pro 14英寸 (M1 Max,2021)', '10 核中央处理器、32 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Max'],
+            ['4T', 35499, 64, 'MacBook Pro 14英寸 (M1 Max,2021)', '10 核中央处理器、32 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Max'],
+            ['8T', 44499, 64, 'MacBook Pro 14英寸 (M1 Max,2021)', '10 核中央处理器、32 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Max'],
+        ];
+        const dataMacBookPro16 = [
+            ['512G', 18999, 16, 'MacBook Pro 16英寸 (M1 Pro,2021)', '10 核中央处理器、16 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Pro'],
+            ['1T', 20499, 16, 'MacBook Pro 16英寸 (M1 Pro,2021)', '10 核中央处理器、16 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Pro'],
+            ['2T', 23499, 16, 'MacBook Pro 16英寸 (M1 Pro,2021)', '10 核中央处理器、16 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Pro'],
+            ['4T', 27999, 16, 'MacBook Pro 16英寸 (M1 Pro,2021)', '10 核中央处理器、16 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Pro'],
+            ['8T', 36999, 16, 'MacBook Pro 16英寸 (M1 Pro,2021)', '10 核中央处理器、16 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Pro'],
+            ['512G', 21999, 32, 'MacBook Pro 16英寸 (M1 Pro,2021)', '10 核中央处理器、16 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Pro'],
+            ['1T', 23499, 32, 'MacBook Pro 16英寸 (M1 Pro,2021)', '10 核中央处理器、16 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Pro'],
+            ['2T', 26499, 32, 'MacBook Pro 16英寸 (M1 Pro,2021)', '10 核中央处理器、16 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Pro'],
+            ['4T', 30999, 32, 'MacBook Pro 16英寸 (M1 Pro,2021)', '10 核中央处理器、16 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Pro'],
+            ['8T', 39999, 32, 'MacBook Pro 16英寸 (M1 Pro,2021)', '10 核中央处理器、16 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Pro'],
+            ['512G', 23499, 32, 'MacBook Pro 16英寸 (M1 Max,2021)', '10 核中央处理器、24 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Max'],
+            ['1T', 24999, 32, 'MacBook Pro 16英寸 (M1 Max,2021)', '10 核中央处理器、24 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Max'],
+            ['2T', 27999, 32, 'MacBook Pro 16英寸 (M1 Max,2021)', '10 核中央处理器、24 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Max'],
+            ['4T', 32499, 32, 'MacBook Pro 16英寸 (M1 Max,2021)', '10 核中央处理器、24 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Max'],
+            ['8T', 41499, 32, 'MacBook Pro 16英寸 (M1 Max,2021)', '10 核中央处理器、24 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Max'],
+            ['512G', 26499, 64, 'MacBook Pro 16英寸 (M1 Max,2021)', '10 核中央处理器、24 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Max'],
+            ['1T', 27999, 64, 'MacBook Pro 16英寸 (M1 Max,2021)', '10 核中央处理器、24 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Max'],
+            ['2T', 30999, 64, 'MacBook Pro 16英寸 (M1 Max,2021)', '10 核中央处理器、24 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Max'],
+            ['4T', 35499, 64, 'MacBook Pro 16英寸 (M1 Max,2021)', '10 核中央处理器、24 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Max'],
+            ['8T', 44499, 64, 'MacBook Pro 16英寸 (M1 Max,2021)', '10 核中央处理器、24 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Max'],
+            ['512G', 24999, 32, 'MacBook Pro 16英寸 (M1 Max,2021)', '10 核中央处理器、32 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Max'],
+            ['1T', 26499, 32, 'MacBook Pro 16英寸 (M1 Max,2021)', '10 核中央处理器、32 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Max'],
+            ['2T', 29499, 32, 'MacBook Pro 16英寸 (M1 Max,2021)', '10 核中央处理器、32 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Max'],
+            ['4T', 33999, 32, 'MacBook Pro 16英寸 (M1 Max,2021)', '10 核中央处理器、32 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Max'],
+            ['8T', 42999, 32, 'MacBook Pro 16英寸 (M1 Max,2021)', '10 核中央处理器、32 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Max'],
+            ['512G', 27999, 64, 'MacBook Pro 16英寸 (M1 Max,2021)', '10 核中央处理器、32 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Max'],
+            ['1T', 29499, 64, 'MacBook Pro 16英寸 (M1 Max,2021)', '10 核中央处理器、32 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Max'],
+            ['2T', 32499, 64, 'MacBook Pro 16英寸 (M1 Max,2021)', '10 核中央处理器、32 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Max'],
+            ['4T', 36999, 64, 'MacBook Pro 16英寸 (M1 Max,2021)', '10 核中央处理器、32 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Max'],
+            ['8T', 45999, 64, 'MacBook Pro 16英寸 (M1 Max,2021)', '10 核中央处理器、32 核图形处理器和 16 核神经网络引擎</br>96W USB-C 电源适配器', 'M1 Max'],
+        ];
+        const dataWatch = [];
+        const schema = [{
+            name: 'rom',
+            index: 0,
+            text: '存储内存'
+        }, {
+            name: 'price',
+            index: 1,
+            text: '官网售价'
+        }, {
+            name: 'ram',
+            index: 2,
+            text: '运行内存'
+        }, {
+            name: 'name',
+            index: 3,
+            text: '型号'
+        }, {
+            name: 'tips',
+            index: 3,
+            text: 'tips'
+        }];
+        const itemStyle = {
+            opacity: 0.8,
+            // shadowBlur: 10,
+            // shadowOffsetX: 0,
+            // shadowOffsetY: 0,
+            // shadowColor: 'rgba(0,0,0,0.3)'
+        };
+
+        option = {
+            color: ['#A2D2FF', '#FFEE93', '#F5D782', '#FF9292', '#FFB4B4', '#FFDCDC', '#BDD2B6', '#A2B29F', '#798777'],
+            legend: {
+                top: 10,
+                data: ['iPhone', 'iPad', 'iPad Pro', 'Mac Mini', 'iMac', 'MacBook Air', 'MacBook Pro 13', 'MacBook Pro 14', 'MacBook Pro 16'],
+                textStyle: {
+                    fontSize: 16
+                }
+            },
+            grid: {
+                left: '10%',
+                right: '10%',
+                top: '18%',
+                bottom: '10%'
+            },
+            tooltip: {
+                backgroundColor: 'rgba(255,255,255,0.7)',
+                formatter: function(param) {
+                    var value = param.value;
+                    // prettier-ignore
+                    return '<div style="border-bottom: 1px solid rgba(255,255,255,.3); font-size: 18px;">' +
+                        value[3] +
+                        '</div>' +
+                        '<div style="border-bottom: 1px solid rgba(255,255,255,.3); font-size: 10px;padding-bottom: 7px;margin-bottom: 7px">' +
+                        value[5] + '</br>' + value[4] +
+                        '</div>' +
+                        schema[1].text + '：￥' + value[1] + '<br>' +
+                        schema[2].text + '：' + value[2] + 'G<br>' +
+                        schema[0].text + '：' + value[0] + '<br>';
+                }
+            },
+            xAxis: {
+                type: 'category',
+                name: '',
+                data: [
+                    '64G',
+                    '128G',
+                    '256G',
+                    '512G',
+                    '1T',
+                    '2T',
+                    '4T',
+                    '8T'
+                ]
+            },
+            yAxis: {
+                type: 'value',
+                name: '官方售价(人名币)',
+            },
+            dataZoom: [{
+                type: 'inside'
+            }, {
+                type: 'slider',
+                showDataShadow: false,
+                handleIcon: 'path://M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+                handleSize: '80%'
+            }, {
+                type: 'inside',
+                orient: 'vertical'
+            }, {
+                type: 'slider',
+                orient: 'vertical',
+                showDataShadow: false,
+                handleIcon: 'path://M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+                handleSize: '80%'
+            }],
+            series: [{
+                name: 'iPhone',
+                type: 'scatter',
+                itemStyle: itemStyle,
+                data: dataiPhone,
+                // symbolSize: 20,
+                
+                symbolSize: 15
+            }, {
+                name: 'iPad',
+                type: 'scatter',
+                itemStyle: itemStyle,
+                data: dataiPad,
+                symbolSize: 15
+            }, {
+                name: 'iPad Pro',
+                type: 'scatter',
+                itemStyle: itemStyle,
+                data: dataiPadPro,
+                symbolSize: 15
+            }, {
+                name: 'Mac Mini',
+                type: 'scatter',
+                itemStyle: itemStyle,
+                data: dataMacMini,
+                symbolSize: 15
+            }, {
+                name: 'iMac',
+                type: 'scatter',
+                itemStyle: itemStyle,
+                data: dataiMac,
+                symbolSize: 15
+            }, {
+                name: 'MacBook Air',
+                type: 'scatter',
+                itemStyle: itemStyle,
+                data: dataMacBookAir,
+                symbolSize: 15
+            }, {
+                name: 'MacBook Pro 13',
+                type: 'scatter',
+                itemStyle: itemStyle,
+                data: dataMacBookPro13,
+                symbolSize: 15
+            }, {
+                name: 'MacBook Pro 14',
+                type: 'scatter',
+                itemStyle: itemStyle,
+                data: dataMacBookPro14,
+                symbolSize: 15
+            }, {
+                name: 'MacBook Pro 16',
+                type: 'scatter',
+                itemStyle: itemStyle,
+                data: dataMacBookPro16,
+                //symbol: 'path://M117.5,0V7a13.31,13.31,0,0,1-13.31,13.31H32.81A13.31,13.31,0,0,1,19.5,7V0a68.5,68.5,0,1,0,98,0Z',
+                symbolSize: 15
+            }]
+
+        };
+
+        myChart.setOption(option);
+    </script>
+</body>
+
+</html>
